@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  TMDBTableView
+
+  Created by qbuser on 12/10/22.
+  
+*/
+
+//MARK: - Movie Type
+"movie-type.popular.title" = "Populaire";
+"movie-type.upcoming.title" = "Avenir";
+"movie-type.now-playing.title" = "Lecture en Cours";
+"movie-type.top-rated.title" = "Les Mieux Notés";
+
+//MARK: TMDB Error
+"network-service-error.invalid-url" = "L'URL fournie n'est pas une URL HTTP valide.";
+"network-service-error.unknown" = "Erreur de service réseau inconnue.";
+"network-service-error.unexpected-response" = "Le service réseau a renvoyé une réponse inattendue.";
+"network-service-error.parse-error" = "Le service réseau a renvoyé une réponse qui n'a pas pu être analysée.";

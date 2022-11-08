@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  TMDBTableView
+
+  Created by qbuser on 12/10/22.
+  
+*/
+
+//MARK: - Movie Type
+"movie-type.popular.title" = "Popular";
+"movie-type.upcoming.title" = "Upcoming";
+"movie-type.now-playing.title" = "Now Playing";
+"movie-type.top-rated.title" = "Top Rated";
+
+//MARK: TMDB Error
+"network-service-error.invalid-url" = "The URL provided in not a valid HTTP URL.";
+"network-service-error.unknown" = "Unknown network service error.";
+"network-service-error.unexpected-response" = "The network service returned an unexpected response.";
+"network-service-error.parse-error" = "The network service returned a response that couldn't be parsed.";
