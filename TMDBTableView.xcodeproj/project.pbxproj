@@ -25,6 +25,10 @@
 		0B7F3C61291A7BDF0076713F /* MovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F3C60291A7BDF0076713F /* MovieRepository.swift */; };
 		0B7F3C63291A7D600076713F /* RepoCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F3C62291A7D600076713F /* RepoCallback.swift */; };
 		0B7F3C66291A81780076713F /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F3C65291A81780076713F /* ImageRepository.swift */; };
+		0B7F3C6A291AAF950076713F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0B7F3C69291AAF950076713F /* SDWebImage */; };
+		0B7F3C6C291AB31C0076713F /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F3C6B291AB31C0076713F /* UITableView+Extensions.swift */; };
+		0B7F3C6E291AB5E80076713F /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F3C6D291AB5E80076713F /* UIImageView+Extensions.swift */; };
+		0B7F3C70291ABB1D0076713F /* MovieListTableProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7F3C6F291ABB1D0076713F /* MovieListTableProvider.swift */; };
 		0BACF66228F7CEDE00388B56 /* MovieType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BACF66128F7CEDE00388B56 /* MovieType.swift */; };
 		0BC1B2D528F19F1300D7B082 /* PaginationViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC1B2D428F19F1300D7B082 /* PaginationViewState.swift */; };
 		0BCBEC81290144640036B575 /* URLCachedImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BCBEC80290144640036B575 /* URLCachedImageService.swift */; };
@@ -67,6 +71,9 @@
 		0B7F3C60291A7BDF0076713F /* MovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepository.swift; sourceTree = "<group>"; };
 		0B7F3C62291A7D600076713F /* RepoCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCallback.swift; sourceTree = "<group>"; };
 		0B7F3C65291A81780076713F /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
+		0B7F3C6B291AB31C0076713F /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		0B7F3C6D291AB5E80076713F /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		0B7F3C6F291ABB1D0076713F /* MovieListTableProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableProvider.swift; sourceTree = "<group>"; };
 		0BACF66128F7CEDE00388B56 /* MovieType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieType.swift; sourceTree = "<group>"; };
 		0BC1B2D428F19F1300D7B082 /* PaginationViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationViewState.swift; sourceTree = "<group>"; };
 		0BCBEC80290144640036B575 /* URLCachedImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCachedImageService.swift; sourceTree = "<group>"; };
@@ -98,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7F3C6A291AAF950076713F /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				0BE3144F28E7FD5C004F37E0 /* MovieListTableViewController.swift */,
+				0B7F3C6F291ABB1D0076713F /* MovieListTableProvider.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,6 +245,8 @@
 				0B46CA5E28EEBE060056F26A /* UIView+Extensions.swift */,
 				0BCE481929005377008254E8 /* UIRefreshControl+Extensions.swift */,
 				0B20DAA2290C059700BA1E2C /* UIView+Layout+Extensions.swift */,
+				0B7F3C6B291AB31C0076713F /* UITableView+Extensions.swift */,
+				0B7F3C6D291AB5E80076713F /* UIImageView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +338,9 @@
 			dependencies = (
 			);
 			name = TMDBTableView;
+			packageProductDependencies = (
+				0B7F3C69291AAF950076713F /* SDWebImage */,
+			);
 			productName = TMDBTableView;
 			productReference = 0BE3144828E7FD5C004F37E0 /* TMDBTableView.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +370,9 @@
 				fr,
 			);
 			mainGroup = 0BE3143F28E7FD5C004F37E0;
+			packageReferences = (
+				0B7F3C68291AAF950076713F /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 0BE3144928E7FD5C004F37E0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -398,6 +415,7 @@
 				0BCE480F29001DDD008254E8 /* NSCachedImageService.swift in Sources */,
 				0B28F50828F82F530055B5E6 /* Networkable.swift in Sources */,
 				0B2CC97328F97C3700AD8E7D /* URLCacher.swift in Sources */,
+				0B7F3C70291ABB1D0076713F /* MovieListTableProvider.swift in Sources */,
 				0B46CA6128EEBE1C0056F26A /* Observable.swift in Sources */,
 				0BCE481A29005377008254E8 /* UIRefreshControl+Extensions.swift in Sources */,
 				0B28F50228F805D40055B5E6 /* NSCacher.swift in Sources */,
@@ -407,6 +425,7 @@
 				0B46CA6528EEBE510056F26A /* MovieViewModel.swift in Sources */,
 				0B46CA5D28EEBDEF0056F26A /* Constants.swift in Sources */,
 				0B7F3C61291A7BDF0076713F /* MovieRepository.swift in Sources */,
+				0B7F3C6E291AB5E80076713F /* UIImageView+Extensions.swift in Sources */,
 				0BCBEC83290144DB0036B575 /* URLCachable.swift in Sources */,
 				0BEF09D528F6E7B000591389 /* L10n.swift in Sources */,
 				0B28F51228F84E330055B5E6 /* TMDBImageRepository.swift in Sources */,
@@ -416,6 +435,7 @@
 				0B46CA5B28EEBDE30056F26A /* TMDBError.swift in Sources */,
 				0BACF66228F7CEDE00388B56 /* MovieType.swift in Sources */,
 				0B2CC97528F98DF700AD8E7D /* ImageServiceProvider.swift in Sources */,
+				0B7F3C6C291AB31C0076713F /* UITableView+Extensions.swift in Sources */,
 				0BCE4818290051D2008254E8 /* FontHelper.swift in Sources */,
 				0BCE43D2291160CD00239D96 /* MovieListView.swift in Sources */,
 				0BEF09D728F6EA5900591389 /* LocalizedString.swift in Sources */,
@@ -635,6 +655,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B7F3C68291AAF950076713F /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B7F3C69291AAF950076713F /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B7F3C68291AAF950076713F /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0BE3144028E7FD5C004F37E0 /* Project object */;
 }

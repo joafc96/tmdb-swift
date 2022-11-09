@@ -51,4 +51,13 @@ extension UIView {
     func fadeOut(with duration: TimeInterval = 1.0) {
         fadeTo(0.0, with: duration)
       }
+    
+    
+    static var nameOfClass: String {
+        return String(describing: self)
+    }
+
+    var nameOfClass: String {
+        return String(describing: type(of: self))
+    }
 }

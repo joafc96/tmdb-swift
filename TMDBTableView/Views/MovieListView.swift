@@ -36,7 +36,7 @@ class MovieListView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.dequeIdentifier)
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.nameOfClass)
         
         return tableView
     }()

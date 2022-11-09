@@ -7,34 +7,9 @@
 
 import UIKit
 
-class MovieTableViewCell: UITableViewCell {
-    static let dequeIdentifier: String = "movieTableViewCell"
+class MovieTableViewCell: UITableViewCell {    
     
-    //MARK: - Setters
-    public var representedIdentifier: Int = 0
-    
-    
-    public var title: String? {
-        didSet {
-            titleLabel.text = title
-        }
-    }
-    
-    public var overview: String? {
-        didSet {
-            overViewLabel.text = overview
-        }
-    }
-    
-    public var poster: UIImage? {
-        didSet {
-            posterImage.alpha = 0.0
-            posterImage.image = poster
-            posterImage.fadeIn(with: 0.5)
-        }
-    }
-    
-    //MARK: - Properties
+    //MARK: - UI Properties
     private let titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -136,5 +111,14 @@ class MovieTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate(detailsStackViewConstraints)
         NSLayoutConstraint.activate(mainStackViewConstraints)
     }
-    
+
+    public func configureCell(with movie: Movie) {
+        titleLabel.text = movie.title
+        overViewLabel.text = movie.overview
+        guard let posterPath = movie.posterPath else { return }
+        guard let imageUrl = Endpoint.posterImage(path: posterPath, quality: ImageQuality.posterMedium.rawValue).imageUrl else { return }
+//        posterImage.alpha = 0.0
+        posterImage.set(for: imageUrl)
+//        posterImage.fadeIn(with: 0.5)
+    }
 }

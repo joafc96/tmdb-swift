@@ -17,12 +17,12 @@ protocol MovieListViewModelProtocol {
     func fetchMovies(for movieType: MovieType, isRefresh: Bool )
     func loadImage(for path: String, completion: @escaping (Data?) -> Void)
     
-    func numberOfRowsInSection() -> Int
-    func movieForRow(at indexPath: IndexPath) -> Movie
-    func heightForRow() -> CGFloat
+    func movieForRow(at indexPath: IndexPath) -> Movie?
 }
 
 final class MovieViewModel: MovieListViewModelProtocol {
+
+    
     
     // MARK: - Dependencies
     private let apiService: MovieRepository
@@ -67,7 +67,11 @@ final class MovieViewModel: MovieListViewModelProtocol {
             guard let strongSelf = self else { return }
             switch result {
             case .success(let movieResult):
-                strongSelf.viewState.value = strongSelf.processMovieResult(currentPage: strongSelf.currentPage, currentMovies: strongSelf.movies, fetchedMovies: movieResult.movies)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    strongSelf.viewState.value = strongSelf.processMovieResult(currentPage: strongSelf.currentPage, currentMovies: strongSelf.movies, fetchedMovies: movieResult.movies)
+                })
+  
             case .failure(let error):
                 strongSelf.viewState.value = .error(error)
             }
@@ -86,18 +90,7 @@ final class MovieViewModel: MovieListViewModelProtocol {
     }
     
     // MARK: - Table View Properties
-    func heightForRow() -> CGFloat {
-        return 150
-    }
-    
-    func numberOfRowsInSection() -> Int {
-        if movies.count != 0 {
-            return movies.count
-        }
-        return 0
-    }
-    
-    func movieForRow(at indexPath: IndexPath) -> Movie {
+    func movieForRow(at indexPath: IndexPath) -> Movie? {
         return movies[indexPath.row]
     }
     
