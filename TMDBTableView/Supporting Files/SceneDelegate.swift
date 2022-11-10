@@ -9,24 +9,27 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
+    private var sceneCoordinator: Coordinator?
+
     private let defaultImageServiceProvider = ImageServiceProvider.createDefaultProvider()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { fatalError("Failed to get scene") }
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        let navigationController = UINavigationController(rootViewController:  MovieListTableViewController(
-            viewModel: MovieViewModel(
-                imageAPIService: TMDBImageRepository(
-                    imageServiceProvider: defaultImageServiceProvider
-                )
-            )
-        )
-    )
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
         
+        let navigationController = UINavigationController()
+        
+        sceneCoordinator = MainSceneCoordinator(
+            navigationController: navigationController,
+            defaultImageServiceProvider: defaultImageServiceProvider
+        )
+        sceneCoordinator?.start()
+
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()  
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -27,7 +27,6 @@ class InfiniteScrollActivityView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     /* The center of the activity view is set in layoutSubviews because each time the frame of the view is changed layoutSubview method also will be called. view setFrame intelligently calls layoutSubviews on the view having its frame set only if the size parameter of the frame is different
      */
     override func layoutSubviews() {
@@ -39,7 +38,6 @@ class InfiniteScrollActivityView: UIView {
     private func configureActivityIndicator() {
         self.addSubview(activityIndicatorView)
     }
-    
     
     //MARK: - Public methods
     public func startAnimating() {

@@ -126,8 +126,8 @@
             filePath = "TMDBTableView/Controllers/MovieListTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "configureView(withState:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "TMDBTableView/Controllers/MovieListTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "configureView(withState:)"
             landmarkType = "7">
          </BreakpointContent>

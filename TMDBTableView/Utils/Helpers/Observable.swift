@@ -6,7 +6,6 @@
 
 import Foundation
 
-
 class Observable<T> {
     
     // Since this is a stored closure everything that this closure

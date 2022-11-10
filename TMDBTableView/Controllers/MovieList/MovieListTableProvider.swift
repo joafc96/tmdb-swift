@@ -16,6 +16,14 @@ protocol MovieListTableProviderDelegate: AnyObject {
 class MovieListTableProvider: NSObject {
     var movies: [Movie] = []
     weak var delegate: MovieListTableProviderDelegate?
+    
+    deinit {
+        print("MovieListTableProviderDelegate is deinitialized")
+    }
+    
+    func movieForRow(at indexPath: IndexPath) -> Movie {
+        return movies[indexPath.row]
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -34,7 +42,7 @@ extension MovieListTableProvider: UITableViewDataSource {
     
     func movieCell(with tableView: UITableView, indexPath: IndexPath) -> MovieTableViewCell {
         let cell: MovieTableViewCell = tableView.dequeueReusableCellForIndexPath(indexPath)
-        let movie = movies[indexPath.row] 
+        let movie = movieForRow(at: indexPath)
         cell.configureCell(with: movie)
         return cell
     }
@@ -44,12 +52,11 @@ extension MovieListTableProvider: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension MovieListTableProvider: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let movie = movies[indexPath.row]
+        let movie = movieForRow(at: indexPath)
         delegate?.didSelect(movie: movie)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
 
 // MARK: - Infinite Scrolling (ScrollView Delegate)
 extension MovieListTableProvider {

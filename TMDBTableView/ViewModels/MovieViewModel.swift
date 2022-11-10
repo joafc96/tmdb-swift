@@ -14,16 +14,11 @@ protocol MovieListViewModelProtocol {
     
     func canFetch() -> Bool
     
-    func fetchMovies(for movieType: MovieType, isRefresh: Bool )
+    func loadData(for movieType: MovieType, isRefresh: Bool )
     func loadImage(for path: String, completion: @escaping (Data?) -> Void)
-    
-    func movieForRow(at indexPath: IndexPath) -> Movie?
 }
 
 final class MovieViewModel: MovieListViewModelProtocol {
-
-    
-    
     // MARK: - Dependencies
     private let apiService: MovieRepository
     private let imageService: ImageRepository
@@ -41,7 +36,7 @@ final class MovieViewModel: MovieListViewModelProtocol {
     }
     
     // MARK: - Initializers
-    init(apiService: MovieRepository = TMDBMovieRepository(), imageAPIService: ImageRepository) {
+    init(apiService: MovieRepository, imageAPIService: ImageRepository) {
         self.apiService = apiService
         self.imageService = imageAPIService
     }
@@ -51,7 +46,7 @@ final class MovieViewModel: MovieListViewModelProtocol {
     }
     
     // MARK: - Networking
-    func fetchMovies(for movieType: MovieType,  isRefresh: Bool = false) {
+    func loadData(for movieType: MovieType,  isRefresh: Bool = false) {
         if !isRefresh {
             viewState.value = (viewState.value == .uninitialized)
             ? .initialFetching
@@ -87,11 +82,6 @@ final class MovieViewModel: MovieListViewModelProtocol {
                 completion(nil)
             }
         }
-    }
-    
-    // MARK: - Table View Properties
-    func movieForRow(at indexPath: IndexPath) -> Movie? {
-        return movies[indexPath.row]
     }
     
     func canFetch() -> Bool {

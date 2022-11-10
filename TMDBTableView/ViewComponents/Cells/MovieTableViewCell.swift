@@ -117,8 +117,6 @@ class MovieTableViewCell: UITableViewCell {
         overViewLabel.text = movie.overview
         guard let posterPath = movie.posterPath else { return }
         guard let imageUrl = Endpoint.posterImage(path: posterPath, quality: ImageQuality.posterMedium.rawValue).imageUrl else { return }
-//        posterImage.alpha = 0.0
         posterImage.set(for: imageUrl)
-//        posterImage.fadeIn(with: 0.5)
     }
 }

@@ -8,7 +8,6 @@
 import UIKit
 
 class MovieListView: UIView {
-    
     public lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +50,7 @@ class MovieListView: UIView {
     }
     
     private func commonInit() {
+        backgroundColor = .systemBackground
         configureSubViews()
         configureConstraints()
     }
