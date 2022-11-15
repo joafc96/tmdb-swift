@@ -8,9 +8,14 @@
 import UIKit
 
 class MovieDetailsVC: UIViewController {
+    
+    // MARK: - Properties
+    private let movie: Movie
     private let detailsView: MovieDetailsView
-
-    init(detailsView: MovieDetailsView = MovieDetailsView()) {
+    
+    // MARK: - Lifecycle
+    init(movie: Movie, detailsView: MovieDetailsView = MovieDetailsView()) {
+        self.movie = movie
         self.detailsView = detailsView
         super.init(nibName: nil, bundle: nil)
     }
@@ -25,9 +30,24 @@ class MovieDetailsVC: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureNavBar()
     }
     
     deinit {
-        print("MovieDetailsVC is deinitialized")
+        print("MovieDetailsVC deinit")
+    }
+    
+}
+
+
+// MARK: - UI Configuration
+extension MovieDetailsVC {
+    func configureNavBar() {
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.isTranslucent = true
+            navigationItem.largeTitleDisplayMode = .never
+        }
+        navigationItem.title = movie.title
     }
 }

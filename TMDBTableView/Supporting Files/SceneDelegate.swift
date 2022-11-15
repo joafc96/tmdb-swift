@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         
-        sceneCoordinator = MainSceneCoordinator(
+        sceneCoordinator = AppCoordinator(
             navigationController: navigationController,
             defaultImageServiceProvider: defaultImageServiceProvider
         )

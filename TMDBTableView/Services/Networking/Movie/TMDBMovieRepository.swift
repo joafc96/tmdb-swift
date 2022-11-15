@@ -34,6 +34,6 @@ final class TMDBMovieRepository: MovieRepository {
     }
     
     deinit {
-        print("TMDB Movie Repo service is deinitialized")
+        print("TMDB Movie Repo service deinit")
     }
 }

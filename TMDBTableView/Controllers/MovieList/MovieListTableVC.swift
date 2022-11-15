@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol MovieListTableViewControllerDelegate: AnyObject {
-    func showDetails(for movie: Movie)
+protocol MovieListTableViewControllerCoordinatorDelegate: AnyObject {
+    func navigateToMovieDetails(for movie: Movie)
 }
 
 class MovieListTableVC: UIViewController {
     private let movieType: MovieType
-    weak var delegate: MovieListTableViewControllerDelegate?
+    weak var coordinatorDelegate: MovieListTableViewControllerCoordinatorDelegate?
     
     // MARK: - Dependencies
     private let viewModel: MovieViewModel
@@ -56,7 +56,7 @@ class MovieListTableVC: UIViewController {
     }
     
     deinit {
-        print("MovieTableViewVC is deinitialized")
+        print("MovieTableViewVC deinit")
     }
     
     //MARK:- Pull to refresh
@@ -79,7 +79,7 @@ extension MovieListTableVC {
     private func configureNavBar() {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.isTranslucent = true
-            navigationController?.hidesBarsOnSwipe = true
+//            navigationController?.hidesBarsOnSwipe = true
             //navigationController?.hidesBarsOnTap = true
             navigationController?.navigationBar.prefersLargeTitles = true
             navigationItem.largeTitleDisplayMode = .always
@@ -178,7 +178,7 @@ extension MovieListTableVC: MovieListTableProviderDelegate {
         return viewModel.canFetch()
     }
     
-    func didSelect(movie: Movie) {
+    func didSelectMovie(_ provider: MovieListTableProvider, movie: Movie) {
         // Segue to newVC
 
         // let newVC = newVC()
@@ -186,7 +186,10 @@ extension MovieListTableVC: MovieListTableProviderDelegate {
         //newVC.modalPresentationStyle = .fullScreen
         //newVC.modalTransitionStyle = .flipHorizontal
         //navigationController?.pushViewController(newVc, animated: true)
-        delegate?.showDetails(for: movie)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300), execute: { [weak self] in
+            self?.coordinatorDelegate?.navigateToMovieDetails(for: movie)
+        })
+        
     }
     
     func loadNextPage() {

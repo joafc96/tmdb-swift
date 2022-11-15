@@ -9,7 +9,7 @@ import UIKit
 
 protocol MovieListTableProviderDelegate: AnyObject {
     func canFetchMovie() -> Bool
-    func didSelect(movie: Movie)
+    func didSelectMovie(_ provider: MovieListTableProvider, movie: Movie)
     func loadNextPage()
 }
 
@@ -18,7 +18,7 @@ class MovieListTableProvider: NSObject {
     weak var delegate: MovieListTableProviderDelegate?
     
     deinit {
-        print("MovieListTableProviderDelegate is deinitialized")
+        print("MovieListTableProviderDelegate deinit")
     }
     
     func movieForRow(at indexPath: IndexPath) -> Movie {
@@ -46,14 +46,26 @@ extension MovieListTableProvider: UITableViewDataSource {
         cell.configureCell(with: movie)
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+//        UIView.animate(withDuration: 0.3) {
+//            cell.transform = CGAffineTransform.identity
+//        }
+//    }
 
 }
 
 // MARK: - UITableViewDelegate
 extension MovieListTableProvider: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? MovieTableViewCell else {
+            return
+        }
+        cell.posterImage.scaleDownAnimate(to: 0.8)
+        
         let movie = movieForRow(at: indexPath)
-        delegate?.didSelect(movie: movie)
+        delegate?.didSelectMovie(self, movie: movie)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -79,3 +91,6 @@ extension MovieListTableProvider {
         }
     }
 }
+
+
+

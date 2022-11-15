@@ -19,4 +19,19 @@ extension UIImageView {
             }
         }
     }
+    
+    /**
+     Scale down animation to with duration and scale value.
+     - parameter scaleValue: scale down scale value for x and y
+     - parameter duration: custom animation duration
+     */
+    func scaleDownAnimate(to scaleValue: CGFloat,  with duration: CGFloat = 0.2) {
+        UIView.animate(withDuration: duration, animations: {
+            self.transform = CGAffineTransform(scaleX: scaleValue, y: scaleValue)
+        }, completion: { finished in
+            UIView.animate(withDuration: duration, animations: {
+                self.transform = CGAffineTransform.identity
+            })
+        })
+    }
 }

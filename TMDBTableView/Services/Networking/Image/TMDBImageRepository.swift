@@ -32,6 +32,6 @@ final class TMDBImageRepository: ImageRepository {
     }
     
     deinit {
-        print("Image API service is deinitialized")
+        print("Image API service deinit")
     }
 }

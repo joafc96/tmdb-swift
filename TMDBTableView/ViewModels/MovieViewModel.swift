@@ -42,7 +42,7 @@ final class MovieViewModel: MovieListViewModelProtocol {
     }
     
     deinit {
-        print("MovieViewModel is deinitialized")
+        print("MovieViewModel deinit")
     }
     
     // MARK: - Networking

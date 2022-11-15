@@ -33,7 +33,7 @@ class MovieTableViewCell: UITableViewCell {
         return lbl
     }()
     
-    private let posterImage: UIImageView = {
+    public let posterImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.layer.cornerRadius = 8
@@ -120,3 +120,4 @@ class MovieTableViewCell: UITableViewCell {
         posterImage.set(for: imageUrl)
     }
 }
+
